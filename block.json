@@ -12,5 +12,19 @@
 	"textdomain": "product-slider",
 	"editorScript": "file:./build/index.js",
 	"editorStyle": "file:./build/index.css",
-	"style": "file:./build/style-index.css"
+	"style": "file:./build/style-index.css",
+	"attributes": {
+		"imageAlt": {
+			"type": "string",
+			"default": ""
+		},
+		"imageUrl": {
+			"type": "string",
+			"default": ""
+		},
+		"mediaID": {
+			"type": "number",
+			"default": 0
+		}
+	}
 }

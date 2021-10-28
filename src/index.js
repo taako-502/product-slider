@@ -26,28 +26,6 @@ import save from './save';
  * @see https://developer.wordpress.org/block-editor/reference-guides/block-api/block-registration/
  */
 registerBlockType('create-block/product-slider', {
-  attributes:{
-    //img の alt 属性の値
-    imageAlt: {
-      type: 'string',
-      source: 'attribute',
-      attribute: 'alt',
-      selector: '.p-balloon__img'
-    },
-    //img の src に指定する URL
-    imageUrl: {
-     type: 'string',
-     source: 'attribute',
-     attribute: 'src',
-     selector: '.p-balloon__img'
-    },
-    //MediaUpload の value の値
-    mediaID: {
-      type: 'number',
-      default: 0
-    },
-  },
-
 	/**
 	 * @see ./edit.js
 	 */

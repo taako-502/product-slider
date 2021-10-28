@@ -145,28 +145,6 @@ __webpack_require__.r(__webpack_exports__);
  */
 
 (0,_wordpress_blocks__WEBPACK_IMPORTED_MODULE_0__.registerBlockType)('create-block/product-slider', {
-  attributes: {
-    //img の alt 属性の値
-    imageAlt: {
-      type: 'string',
-      source: 'attribute',
-      attribute: 'alt',
-      selector: '.p-balloon__img'
-    },
-    //img の src に指定する URL
-    imageUrl: {
-      type: 'string',
-      source: 'attribute',
-      attribute: 'src',
-      selector: '.p-balloon__img'
-    },
-    //MediaUpload の value の値
-    mediaID: {
-      type: 'number',
-      default: 0
-    }
-  },
-
   /**
    * @see ./edit.js
    */
