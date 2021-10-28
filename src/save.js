@@ -22,13 +22,12 @@ import { useBlockProps } from '@wordpress/block-editor';
  *
  * @return {WPElement} Element to render.
  */
-export default function save() {
+export default function save({ attributes } ) {
 	return (
-		<p {...useBlockProps.save()}>
-			{__(
-				'Product Slider – hello from the saved content!',
-				'product-slider'
-			)}
-		</p>
+		<div {...useBlockProps.save()}>
+      <img
+        src={attributes.imageUrl}
+      />
+		</div>
 	);
 }

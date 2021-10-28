@@ -61,18 +61,18 @@ export default function Edit( { attributes, setAttributes } ) {
       />
     );
   } else {
-    return (
-      <div className="button-container">
-        <Button
-          onClick={ open }
-          className="p-balloon__btn"
-        >
-          画像をアップロード
-        </Button>
-      </div>
-    );
-  }
-};
+      return (
+        <div className="button-container">
+          <Button
+            onClick={ open }
+            className="p-balloon__btn"
+          >
+            画像をアップロード
+          </Button>
+        </div>
+      );
+    }
+  };
 
 	return (
     <div { ...useBlockProps() }>
