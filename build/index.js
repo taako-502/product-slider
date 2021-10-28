@@ -68,6 +68,14 @@ function Edit({
     });
   };
 
+  const removeMedia = () => {
+    setAttributes({
+      mediaID: 0,
+      imageUrl: '',
+      imageAlt: ''
+    });
+  };
+
   const getImageButton = open => {
     if (attributes.imageUrl) {
       return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("img", {
@@ -86,7 +94,7 @@ function Edit({
     }
   };
 
-  return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+  return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", (0,_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_3__.useBlockProps)(), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
     className: "p-product-slider"
   }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_3__.MediaUploadCheck, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_3__.MediaUpload, {
     onSelect: onSelectImage,
@@ -100,7 +108,7 @@ function Edit({
     isLink: true,
     isDestructive: true,
     className: "removeImage"
-  }, "\u753B\u50CF\u3092\u524A\u9664")));
+  }, "\u753B\u50CF\u3092\u524A\u9664"))));
 }
 
 /***/ }),

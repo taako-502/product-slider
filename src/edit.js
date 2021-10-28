@@ -14,7 +14,7 @@ import { Button } from '@wordpress/components';
  *
  * @see https://developer.wordpress.org/block-editor/packages/packages-block-editor/#useBlockProps
  */
-import { MediaUpload, MediaUploadCheck } from '@wordpress/block-editor';
+import { useBlockProps , MediaUpload, MediaUploadCheck } from '@wordpress/block-editor';
 
 /**
  * Lets webpack process CSS, SASS or SCSS files referenced in JavaScript files.
@@ -42,6 +42,14 @@ export default function Edit( { attributes, setAttributes } ) {
     } );
   };
 
+  const removeMedia = () => {
+    setAttributes({
+      mediaID: 0,
+      imageUrl: '',
+      imageAlt: ''
+    });
+  }
+
   const getImageButton = ( open ) => {
   if(attributes.imageUrl) {
     return (
@@ -67,25 +75,27 @@ export default function Edit( { attributes, setAttributes } ) {
 };
 
 	return (
-    <div className="p-product-slider">
-      <MediaUploadCheck>
-        <MediaUpload
-          onSelect={ onSelectImage }
-          allowedTypes={ ['image'] }
-          value={ attributes.mediaID }
-          render={ ({ open }) => getImageButton( open ) }
-        />
-      </MediaUploadCheck>
-      { attributes.mediaID != 0  &&
+    <div { ...useBlockProps() }>
+      <div className="p-product-slider">
         <MediaUploadCheck>
-          <Button
-            onClick={removeMedia}
-            isLink
-            isDestructive
-            className="removeImage">画像を削除
-          </Button>
+          <MediaUpload
+            onSelect={ onSelectImage }
+            allowedTypes={ ['image'] }
+            value={ attributes.mediaID }
+            render={ ({ open }) => getImageButton( open ) }
+          />
         </MediaUploadCheck>
-      }
+        { attributes.mediaID != 0  &&
+          <MediaUploadCheck>
+            <Button
+              onClick={removeMedia}
+              isLink
+              isDestructive
+              className="removeImage">画像を削除
+            </Button>
+          </MediaUploadCheck>
+        }
+      </div>
     </div>
 	);
 }
