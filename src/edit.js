@@ -32,9 +32,7 @@ import './editor.scss';
  *
  * @return {WPElement} Element to render.
  */
-export default function Edit( props ) {
-  //分割代入を使って props 経由でプロパティを変数に代入
-  const { className, attributes, setAttributes} = props;
+export default function Edit( { attributes, setAttributes } ) {
 
   const onSelectImage = ( media ) => {
     setAttributes( {

@@ -56,14 +56,10 @@ __webpack_require__.r(__webpack_exports__);
  * @return {WPElement} Element to render.
  */
 
-function Edit(props) {
-  //分割代入を使って props 経由でプロパティを変数に代入
-  const {
-    className,
-    attributes,
-    setAttributes
-  } = props;
-
+function Edit({
+  attributes,
+  setAttributes
+}) {
   const onSelectImage = media => {
     setAttributes({
       imageAlt: media.alt,
