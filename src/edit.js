@@ -3,7 +3,10 @@
  *
  * @see https://developer.wordpress.org/block-editor/packages/packages-i18n/
  */
+import { Fragment } from '@wordpress/element';
 import { __ } from '@wordpress/i18n';
+import { Button } from '@wordpress/components';
+
 
 /**
  * React hook that is used to mark the block wrapper element.
@@ -11,7 +14,7 @@ import { __ } from '@wordpress/i18n';
  *
  * @see https://developer.wordpress.org/block-editor/packages/packages-block-editor/#useBlockProps
  */
-import { useBlockProps } from '@wordpress/block-editor';
+import { MediaUpload, MediaUploadCheck } from '@wordpress/block-editor';
 
 /**
  * Lets webpack process CSS, SASS or SCSS files referenced in JavaScript files.
@@ -29,10 +32,62 @@ import './editor.scss';
  *
  * @return {WPElement} Element to render.
  */
-export default function Edit() {
+export default function Edit( props ) {
+  //分割代入を使って props 経由でプロパティを変数に代入
+  const { className, attributes, setAttributes} = props;
+
+  const onSelectImage = ( media ) => {
+    setAttributes( {
+      imageAlt: media.alt,
+      imageUrl: media.url,
+      mediaID: media.id
+    } );
+  };
+
+  const getImageButton = ( open ) => {
+  if(attributes.imageUrl) {
+    return (
+      <img
+        src={ attributes.imageUrl }
+        onClick={ open }
+        className="p-balloon__img"
+        alt=""
+      />
+    );
+  } else {
+    return (
+      <div className="button-container">
+        <Button
+          onClick={ open }
+          className="p-balloon__btn"
+        >
+          画像をアップロード
+        </Button>
+      </div>
+    );
+  }
+};
+
 	return (
-		<p {...useBlockProps()}>
-			{__('Product Slider – hello from the editor!', 'product-slider')}
-		</p>
+    <div className="p-product-slider">
+      <MediaUploadCheck>
+        <MediaUpload
+          onSelect={ onSelectImage }
+          allowedTypes={ ['image'] }
+          value={ attributes.mediaID }
+          render={ ({ open }) => getImageButton( open ) }
+        />
+      </MediaUploadCheck>
+      { attributes.mediaID != 0  &&
+        <MediaUploadCheck>
+          <Button
+            onClick={removeMedia}
+            isLink
+            isDestructive
+            className="removeImage">画像を削除
+          </Button>
+        </MediaUploadCheck>
+      }
+    </div>
 	);
 }
