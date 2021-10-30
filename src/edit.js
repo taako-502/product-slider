@@ -56,7 +56,7 @@ export default function Edit( { attributes, setAttributes } ) {
       <img
         src={ attributes.imageUrl }
         onClick={ open }
-        className="p-balloon__img"
+        className="p-product-slider__img"
         alt=""
       />
     );
@@ -65,7 +65,7 @@ export default function Edit( { attributes, setAttributes } ) {
         <div className="button-container">
           <Button
             onClick={ open }
-            className="p-balloon__btn"
+            className="p-product-slider__btn"
           >
             画像をアップロード
           </Button>
