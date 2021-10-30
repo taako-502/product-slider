@@ -15,16 +15,16 @@
 	"style": "file:./build/style-index.css",
 	"attributes": {
 		"imageAlt": {
-			"type": "string",
-			"default": ""
+			"type": "array",
+			"default": []
 		},
 		"imageUrl": {
-			"type": "string",
-			"default": ""
+			"type": "array",
+			"default": []
 		},
 		"mediaID": {
-			"type": "number",
-			"default": 0
+			"type": "array",
+			"default": []
 		}
 	}
 }

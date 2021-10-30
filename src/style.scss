@@ -6,7 +6,11 @@
  */
 
 .wp-block-create-block-product-slider {
-	background-color: #21759b;
-	color: #fff;
-	padding: 2px;
+  background-color: white;
+  color: #fff;
+  padding: 2px;
+
+  li {
+    list-style: none;
+  }
 }

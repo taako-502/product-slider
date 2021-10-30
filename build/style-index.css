@@ -8,9 +8,12 @@
  * Replace them with your own styles or remove the file completely.
  */
 .wp-block-create-block-product-slider {
-  background-color: #21759b;
+  background-color: white;
   color: #fff;
   padding: 2px;
+}
+.wp-block-create-block-product-slider li {
+  list-style: none;
 }
 
 /*# sourceMappingURL=style-index.css.map*/

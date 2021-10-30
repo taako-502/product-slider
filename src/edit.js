@@ -35,32 +35,43 @@ import './editor.scss';
 export default function Edit( { attributes, setAttributes } ) {
 
   const onSelectImage = ( media ) => {
-    setAttributes( {
-      imageAlt: media.alt,
-      imageUrl: media.url,
-      mediaID: media.id
+    const imageAlt = media.map((image) => image.alt);
+    const imageUrl = media.map((image) => image.url);
+    const media_ID = media.map((image) => image.id);
+    setAttributes({
+      imageAlt: imageAlt,
+      imageUrl: imageUrl,
+      mediaID: media_ID
     } );
   };
 
   const removeMedia = () => {
     setAttributes({
-      mediaID: 0,
-      imageUrl: '',
-      imageAlt: ''
+      mediaID: [],
+      imageUrl: [],
+      imageAlt: []
     });
   }
 
+  const gallery = attributes.imageUrl.map((url) =>
+    <ul>
+      <li>
+        <img
+          src={ url }
+          onClick={ open }
+          className="p-product-slider__img"
+          alt=""
+        />
+      </li>
+    </ul>
+  );
+
   const getImageButton = ( open ) => {
-  if(attributes.imageUrl) {
-    return (
-      <img
-        src={ attributes.imageUrl }
-        onClick={ open }
-        className="p-product-slider__img"
-        alt=""
-      />
-    );
-  } else {
+    if(attributes.imageUrl.length != 0){
+      return (
+        <div>{ gallery }</div>
+      );
+    } else {
       return (
         <div className="button-container">
           <Button
@@ -79,8 +90,10 @@ export default function Edit( { attributes, setAttributes } ) {
       <div className="p-product-slider">
         <MediaUploadCheck>
           <MediaUpload
+            multiple={ true }
             onSelect={ onSelectImage }
             allowedTypes={ ['image'] }
+            gallery={ true }
             value={ attributes.mediaID }
             render={ ({ open }) => getImageButton( open ) }
           />

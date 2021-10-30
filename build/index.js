@@ -61,35 +61,40 @@ function Edit({
   setAttributes
 }) {
   const onSelectImage = media => {
+    const imageAlt = media.map(image => image.alt);
+    const imageUrl = media.map(image => image.url);
+    const media_ID = media.map(image => image.id);
     setAttributes({
-      imageAlt: media.alt,
-      imageUrl: media.url,
-      mediaID: media.id
+      imageAlt: imageAlt,
+      imageUrl: imageUrl,
+      mediaID: media_ID
     });
   };
 
   const removeMedia = () => {
     setAttributes({
-      mediaID: 0,
-      imageUrl: '',
-      imageAlt: ''
+      mediaID: [],
+      imageUrl: [],
+      imageAlt: []
     });
   };
 
+  const gallery = attributes.imageUrl.map(url => (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("ul", null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("li", null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("img", {
+    src: url,
+    onClick: open,
+    className: "p-product-slider__img",
+    alt: ""
+  }))));
+
   const getImageButton = open => {
-    if (attributes.imageUrl) {
-      return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("img", {
-        src: attributes.imageUrl,
-        onClick: open,
-        className: "p-balloon__img",
-        alt: ""
-      });
+    if (attributes.imageUrl.length != 0) {
+      return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", null, gallery);
     } else {
       return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
         className: "button-container"
       }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.Button, {
         onClick: open,
-        className: "p-balloon__btn"
+        className: "p-product-slider__btn"
       }, "\u753B\u50CF\u3092\u30A2\u30C3\u30D7\u30ED\u30FC\u30C9"));
     }
   };
@@ -97,8 +102,10 @@ function Edit({
   return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", (0,_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_3__.useBlockProps)(), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
     className: "p-product-slider"
   }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_3__.MediaUploadCheck, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_3__.MediaUpload, {
+    multiple: true,
     onSelect: onSelectImage,
     allowedTypes: ['image'],
+    gallery: true,
     value: attributes.mediaID,
     render: ({
       open
