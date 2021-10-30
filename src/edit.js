@@ -54,22 +54,22 @@ export default function Edit( { attributes, setAttributes } ) {
   }
 
   const gallery = attributes.imageUrl.map((url) =>
-    <ul>
-      <li>
-        <img
-          src={ url }
-          onClick={ open }
-          className="p-product-slider__img"
-          alt=""
-        />
-      </li>
-    </ul>
+    <li>
+      <img
+        src={ url }
+        onClick={ open }
+        className="p-product-slider__img"
+        alt=""
+      />
+    </li>
   );
 
   const getImageButton = ( open ) => {
     if(attributes.imageUrl.length != 0){
       return (
-        <div>{ gallery }</div>
+        <ul>
+          <div>{ gallery }</div>
+        </ul>
       );
     } else {
       return (

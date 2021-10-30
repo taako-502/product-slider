@@ -24,21 +24,20 @@ import { useBlockProps } from '@wordpress/block-editor';
  */
 export default function save({ attributes } ) {
   const gallery = attributes.imageUrl.map((url) =>
-    <ul>
-      <li>
-        <img
-          src={ url }
-          onClick={ open }
-          className="p-product-slider__img"
-          alt=""
-        />
-      </li>
-    </ul>
+    <li>
+      <img
+        src={ url }
+        className="p-product-slider__img"
+        alt=""
+      />
+    </li>
   );
 
 	return (
 		<div {...useBlockProps.save()}>
-      {gallery}
+      <ul>
+        {gallery}
+      </ul>
 		</div>
 	);
 }

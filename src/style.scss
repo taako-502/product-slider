@@ -8,9 +8,27 @@
 .wp-block-create-block-product-slider {
   background-color: white;
   color: #fff;
-  padding: 2px;
+  //padding: 2px;
 
-  li {
-    list-style: none;
+  ul {
+     display: flex;
+     flex-direction: row;
+     padding: 0;
+
+    li {
+      display: inline-block;
+      list-style: none;
+      width: calc(100% / 2);
+      height: auto;
+
+      img {
+        width: auto;
+      }
+    }
   }
+}
+
+//エディタ側
+.editor-styles-wrapper .p-product-slider ul {
+  padding: 0;
 }
