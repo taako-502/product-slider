@@ -23,11 +23,22 @@ import { useBlockProps } from '@wordpress/block-editor';
  * @return {WPElement} Element to render.
  */
 export default function save({ attributes } ) {
+  const gallery = attributes.imageUrl.map((url) =>
+    <ul>
+      <li>
+        <img
+          src={ url }
+          onClick={ open }
+          className="p-product-slider__img"
+          alt=""
+        />
+      </li>
+    </ul>
+  );
+
 	return (
 		<div {...useBlockProps.save()}>
-      <img
-        src={attributes.imageUrl}
-      />
+      {gallery}
 		</div>
 	);
 }
